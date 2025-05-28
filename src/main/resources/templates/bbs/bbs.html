@@ -43,12 +43,15 @@
     </form>
 
     <div class="comment-list" th:each="comment : ${article.commentList}">
-      <p>コメント者名：<span th:text="${comment.name}"></span></p>
-      <p>
-        コメント内容：
-        <strong><span th:text="${comment.content}"></span></strong>
-      </p>
+      <div class="comment">
+        <p class="comment-author">コメント者名：<span th:text="${comment.name}"></span></p>
+        <p class="comment-content">
+          コメント内容：<br />
+          <strong><span th:text="${comment.content}"></span></strong>
+        </p>
+      </div>
     </div>
+
 
     <form
             class="comment-form"

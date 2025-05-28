@@ -28,7 +28,7 @@ public class ArticleService {
      *
      * @return 検索された記事一覧
      */
-    public List<Article> searchAll() {
+    public List<Article> searchAllPre() {
         List<Article> articleList = articleRepository.findAll();
         for (Article article : articleList) {
             List<Comment> commentList = commentRepository.findByArticleId(article.getId());
@@ -36,6 +36,17 @@ public class ArticleService {
         }
         return articleList;
     }
+
+    /**
+     * 記事を取得する.
+     * テーブルを結合して記事を取得している。
+     *
+     * @return 検索された記事一覧
+     */
+    public List<Article> searchAll() {;
+        return articleRepository.findAllWithComments();
+    }
+
 
     /**
      * 記事を投稿する.
