@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 20px;
+  background-color: #f8f9fa;
+}
+
+.title {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.post-form {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.article-list {
+  max-width: 800px;
+  margin-right: 350px; /* 投稿フォームの分だけ余白をとる */
+  padding: 20px;
+}
+
+.article {
+  background-color: #eaf4fc;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.comment-form,
+.delete-form {
+  margin-top: 10px;
+}
+
+button {
+  padding: 6px 12px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
