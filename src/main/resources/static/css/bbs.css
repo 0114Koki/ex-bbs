@@ -70,7 +70,7 @@ button:hover {
   background-color: #0056b3;
 }
 .comment-list {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .comment {
@@ -84,7 +84,8 @@ button:hover {
 
 .comment-author {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .comment-content {

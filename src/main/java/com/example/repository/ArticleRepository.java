@@ -49,6 +49,7 @@ public class ArticleRepository {
                 article.setCommentList(new ArrayList<>());
                 map.put(articleId, article);
             }
+            //コメントあればarticleのcommentListに入れる
             int comId = rs.getInt("com_id");
             if (comId != 0) {//rsあればtrue
                 Comment comment = new Comment();
