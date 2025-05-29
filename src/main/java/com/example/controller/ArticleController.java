@@ -7,6 +7,8 @@ import com.example.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +47,16 @@ public class ArticleController {
      * @return indexメソッドにリダイレクト
      */
     @PostMapping("/post-article")
-    public String postArticle(ArticleForm articleForm, Model model) {
+    public String postArticle(
+            @Validated ArticleForm articleForm
+            , BindingResult result
+            , CommentForm commentForm
+            , Model model) {
+        if(result.hasErrors()){
+
+            return index(model, articleForm, commentForm);
+        }
+
         articleService.insertArticle(articleForm.getName(), articleForm.getContent());
         return "redirect:/article";
     }
@@ -58,7 +69,15 @@ public class ArticleController {
      * @return indexメソッドにリダイレクト
      */
     @PostMapping("/post-comment")
-    public String postComment(CommentForm commentForm, Model model) {
+    public String postComment(
+            ArticleForm articleForm
+            , @Validated CommentForm commentForm
+            , BindingResult result
+            , Model model) {
+        if (result.hasErrors()){
+            return index(model, articleForm, commentForm);
+        }
+        System.out.println(commentForm);
         commentService.insertComment(commentForm.getName(), commentForm.getContent(), commentForm.getIntArticleId());
         return "redirect:/article";
     }
@@ -72,7 +91,8 @@ public class ArticleController {
      */
     @PostMapping("/delete")
     public String deleteArticleAndComment(CommentForm commentForm, Model model) {
-        commentService.deleteCommentByArticleId(commentForm.getIntArticleId());
+        //commentService.deleteCommentByArticleId(commentForm.getIntArticleId());
+        //cascadeをつかって実装した。
         articleService.deleteArticleById(commentForm.getIntArticleId());
         return "redirect:/article";
     }

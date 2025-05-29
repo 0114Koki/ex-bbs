@@ -1,5 +1,7 @@
 package com.example.form;
 
+import jakarta.validation.constraints.Size;
+
 /**
  * コメント表示に使うフォーム.
  *
@@ -13,10 +15,12 @@ public class CommentForm {
     /**
      * コメント者名
      */
+    @Size(min = 1, max = 50, message = "名前は1文字以上50文字以内で記載してください。")
     private String name;
     /**
      * コメント内容
      */
+    @Size(min = 1, max = 140, message = "コメントは1文字以上140文字以内で記載してください。")
     private String content;
 
     public CommentForm() {
